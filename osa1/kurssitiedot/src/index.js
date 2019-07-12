@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 
 const Header = (props) => {
     return (
-        <diV>
+        <div>
             <h1>{props.name}</h1>
-        </diV>
+        </div>
     )
 }
 
