@@ -42,16 +42,18 @@ const App = () => {
   };
 
   const Infobox = ({ country }) => {
-
     const [weather, setWeather] = useState("");
 
     useEffect(() => {
       console.log("effect");
-      axios.get(`http://api.apixu.com/v1/current.json?key=1d53f2b696334621890142847191208&q=${country.name}`).then(response => {
-        console.log("promise fulfilled");
-        setWeather(response.data);
-        
-      });
+      axios
+        .get(
+          `http://api.weatherstack.com/current?access_key=5fdcce199b9ce101d5c1006de2484b25&query=${country.name}`
+        )
+        .then(response => {
+          console.log("promise fulfilled");
+          setWeather(response.data);
+        });
     }, [country.name]);
     return (
       <div>
@@ -68,13 +70,18 @@ const App = () => {
         </div>
         <br></br>
         <img src={country.flag} alt={country.name} width="200" />
-        <h2>Weather in {weather.current ? weather.current.name : null}</h2>
+        <h2>Weather in {weather.location ? weather.location.name : null}</h2>
         <div>
-          <b>temperature:</b> {weather.current ? weather.current.temp_c : null} Celsius
+          <b>temperature:</b> {weather.current ? weather.current.temperature : null}{" "}
+          Celsius
           <br></br>
-          <img src={weather.current ? weather.current.condition.icon : null} alt="Current weather"/>
+          <img
+            src={weather.current ? weather.current.weather_icons : null}
+            alt="Current weather"
+          />
           <br></br>
-          <b>wind:</b> {weather.current ? weather.current.wind_kph : null} kph direction {weather.current ? weather.current.wind_dir : null}
+          <b>wind:</b> {weather.current ? weather.current.wind_speed : null} kph
+          direction {weather.current ? weather.current.wind_dir : null}
         </div>
       </div>
     );
