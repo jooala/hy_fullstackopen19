@@ -1,28 +1,69 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Persons from "./components/PersonsList";
+import PersonForm from "./components/PersonForm";
+import Filter from "./components/Filter";
+import Notification from "./components/Notification";
+import personService from "./services/persons";
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: "Arto Hellas", number: "040-123456" },
-    { name: "Ada Lovelace", number: "39-44-5323523" },
-    { name: "Dan Abramov", number: "12-43-234345" },
-    { name: "Mary Poppendieck", number: "39-23-6423122" }
-  ]);
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
+  const [newFilter, setNewFilter] = useState("");
   const [newNumber, setNewNumber] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [notificationStatus, setNotificationStatus] = useState(null);
 
   const addPerson = event => {
     event.preventDefault();
-    if (persons.find(person => person.name === newName)) {
-      window.alert(`${newName} is already added to phonebook`);
+    setNotificationStatus("confirm");
+    setErrorMessage(`Added ${newName}`);
+    setTimeout(() => {
+      setErrorMessage(null);
+    }, 5000);
+
+    const personObject = {
+      name: newName,
+      number: newNumber
+    };
+    const foundPerson = persons.find(person => person.name === newName);
+    if (foundPerson) {
+      window.confirm(
+        `${newName} is already added to phonebook., replace the number with a new one?`
+      );
+      personService
+        .update(foundPerson.id, personObject)
+        .then(updatedPerson => {
+          setNewName("");
+          setNewNumber("");
+          setPersons(
+            persons.map(person =>
+              person.id !== foundPerson.id ? person : updatedPerson
+            )
+          );
+        })
+        .catch(error => {
+          setNotificationStatus("error");
+          setErrorMessage(
+            `Information of ${newName} has already been removed from server`
+          );
+          setTimeout(() => {
+            setErrorMessage(null);
+          }, 5000);
+        });
     } else {
-      const personObject = {
-        id: persons.length + 1,
-        name: newName,
-        number: newNumber
-      };
-      setPersons(persons.concat(personObject));
-      setNewName("");
-      setNewNumber("");
+      personService.create(personObject).then(returnedPerson => {
+        setPersons(persons.concat(returnedPerson));
+        setNewName("");
+        setNewNumber("");
+      });
+    }
+  };
+  const handleRemove = (event, person) => {
+    event.preventDefault();
+    if (window.confirm(`Poistetaanko ${person.name}`)) {
+      personService.remove(person.id).then(() => {
+        setPersons(persons.filter(personList => personList.id !== person.id));
+      });
     }
   };
   const handlePerson = event => {
@@ -34,41 +75,37 @@ const App = () => {
   };
 
   const handleFilter = event => {
-    console.log(event.target.value);
-    setNewNumber(event.target.value);
+    setNewFilter(event.target.value);
   };
 
-  const Person = props => {
-    return (
-      <div>
-        <p>
-          {props.person.name} {props.person.number}
-        </p>
-      </div>
-    );
-  };
-  const rows = props =>
-    persons.map(person => <Person key={person.id} person={person} />);
+  useEffect(() => {
+    console.log("effect");
+    personService.getAll().then(initialPersons => {
+      console.log("promise fulfilled");
+      setPersons(initialPersons);
+    });
+  }, []);
 
   return (
     <div>
       <h2>Phonebook</h2>
-      <div>
-        filter shown with <input value={newName} onChange={handleFilter} />
-      </div>
-      <form onSubmit={addPerson}>
-        <div>
-          name: <input value={newName} onChange={handlePerson} />
-        </div>
-        <div>
-          number: <input value={newNumber} onChange={handleNumber} />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <Notification message={errorMessage} status={notificationStatus} />
+      <Filter newFilter={newFilter} handleFilter={handleFilter} />
+      <h3>Add a new</h3>
+      <PersonForm
+        persons={persons}
+        addPerson={addPerson}
+        newName={newName}
+        handlePerson={handlePerson}
+        newNumber={newNumber}
+        handleNumber={handleNumber}
+      />
       <h2>Numbers</h2>
-      {rows()}
+      <Persons
+        persons={persons}
+        value={newFilter}
+        handleRemove={handleRemove}
+      />
     </div>
   );
 };
