@@ -1,0 +1,11 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RpIiwiaWQiOiI2MWZiNWFiM2ZkNjVjOTc5NTQ5ODZmMjEiLCJpYXQiOjE2NDY0NDg5OTB9.-H147duZaZ_DgDe1Nqichrx0c_wRyyrz4To-Q53-qrY
+
+{
+    "title": "Kaikki menee",
+    "author": "Jepulis",
+    "url": "http://google.com",
+    "likes": 5,
+    "userId": "61fb5ab3fd65c97954986f21"
+}
