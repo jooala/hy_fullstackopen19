@@ -54,12 +54,23 @@ const App = () => {
       ]
     }
   
+const taulukko = () => {
+  let x = 1;
+  const y = 1;
+  const t = []
+
+  t.concat(1);
+  return {
+    t;
+  }
+}
 
   return (
     <div>
       <Header name={course.name}/>
       <Content parts={course.parts}/>
       <Total parts={course.parts}/>
+      <Taulukko/>
     </div>
   )
 }
