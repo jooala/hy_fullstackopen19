@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+
+  frontend:
+    container_name: blog-frontend
+    build:
+      context: ./bloglist-frontend/
+      dockerfile: Dockerfile
+    ports:
+      - '8080:80'
+  backend:
+    image: bloglist-backend
+    build: 
+      context: ./bloglist-backend/
+      dockerfile: Dockerfile
+    ports:
+      - 3003:3003
+    volumes:
+      - ./bloglist-backend:/usr/src/app
+      - /usr/src/app/node_modules
+    container_name: bloglist-backend-
+    environment:
+      - PORT=3003
+      - MONGODB_URI=mongodb+srv://fsadmin:fullstackopen@cluster0.9gimx.mongodb.net/blog-app?retryWrites=true&w=majority
+      - TEST_MONGODB_URI=mongodb+srv://fsadmin:fullstackopen@cluster0.9gimx.mongodb.net/blog-app-test?retryWrites=true
+      - SECRET=halojaa

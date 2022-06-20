@@ -1,0 +1,519 @@
+Script started on 2022-06-17 06:39:15+03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="176" LINES="30"]
+]0;ember@DESKTOP-0NRNUTB: /mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[01;32member@DESKTOP-0NRNUTB[00m:[01;34m/mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[00m$ docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED       STATUS       PORTS                     NAMES
+629fd24a5c8b   redis     "docker-entrypoint.s…"   2 hours ago   Up 2 hours   0.0.0.0:6379->6379/tcp    todo-backend-redis-1
+3ff6e9d50ca0   mongo     "docker-entrypoint.s…"   3 hours ago   Up 2 hours   0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+]0;ember@DESKTOP-0NRNUTB: /mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[01;32member@DESKTOP-0NRNUTB[00m:[01;34m/mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[00m$ docker exec -it todo-backend-redis-1 bash
+[?2004hroot@629fd24a5c8b:/data# 
+[Kroot@629fd24a5c8b:/data# KEY   KEYS *
+[?2004l
+bash: KEYS: command not found
+[?2004hroot@629fd24a5c8b:/data# redis  -cli
+[?2004l
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> K
+[17C
+[0K127.0.0.1:6379> KE
+[18C
+[0K127.0.0.1:6379> KEY
+[19C
+[0K127.0.0.1:6379> KEYS[0;90;49m pattern[0m
+[20C
+[0K127.0.0.1:6379> KEYS [0;90;49mpattern[0m
+[21C
+[0K127.0.0.1:6379> KEYS *[0;90;49m [0m
+[22C
+[0K127.0.0.1:6379> KEYS *
+[22C
+1) "counter"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET[0;90;49m key[0m
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET "
+[21C
+[0K127.0.0.1:6379> GET "c
+[22C
+[0K127.0.0.1:6379> GET "co
+[23C
+[0K127.0.0.1:6379> GET "cou
+[24C
+[0K127.0.0.1:6379> GET "coun
+[25C
+[0K127.0.0.1:6379> GET "count
+[26C
+[0K127.0.0.1:6379> GET "counte
+[27C
+[0K127.0.0.1:6379> GET "counter
+[28C
+[0K127.0.0.1:6379> GET "counter"[0;90;49m [0m
+[29C
+[0K127.0.0.1:6379> GET "counter"
+[29C
+"0"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> S
+[17C
+[0K127.0.0.1:6379> SE
+[18C
+[0K127.0.0.1:6379> SET[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[19C
+[0K127.0.0.1:6379> SET [0;90;49mkey value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[20C
+[0K127.0.0.1:6379> SET "
+[21C
+[0K127.0.0.1:6379> SET "c
+[22C
+[0K127.0.0.1:6379> SET "co
+[23C
+[0K127.0.0.1:6379> SET "cou
+[24C
+[0K127.0.0.1:6379> SET "coun
+[25C
+[0K127.0.0.1:6379> SET "count
+[26C
+[0K127.0.0.1:6379> SET "counte
+[27C
+[0K127.0.0.1:6379> SET "counter
+[28C
+[0K127.0.0.1:6379> SET "counter"[0;90;49m value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[29C
+[0K127.0.0.1:6379> SET "counter" [0;90;49mvalue [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[30C
+[0K127.0.0.1:6379> SET "counter" 9[0;90;49m [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[31C
+[0K127.0.0.1:6379> SET "counter" 90[0;90;49m [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[32C
+[0K127.0.0.1:6379> SET "counter" 900[0;90;49m [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[33C
+[0K127.0.0.1:6379> SET "counter" 9000[0;90;49m [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[34C
+[0K127.0.0.1:6379> SET "counter" 9000
+[34C
+OK
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET[0;90;49m key[0m
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET "
+[21C
+[0K127.0.0.1:6379> GET "C
+[22C
+[0K127.0.0.1:6379> GET "
+[21C
+[0K127.0.0.1:6379> GET "c
+[22C
+[0K127.0.0.1:6379> GET "co
+[23C
+[0K127.0.0.1:6379> GET "cou
+[24C
+[0K127.0.0.1:6379> GET "coun
+[25C
+[0K127.0.0.1:6379> GET "count
+[26C
+[0K127.0.0.1:6379> GET "counte
+[27C
+[0K127.0.0.1:6379> GET "counter
+[28C
+[0K127.0.0.1:6379> GET "counter"[0;90;49m [0m
+[29C
+[0K127.0.0.1:6379> GET "counter"
+[29C
+"9000"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET[0;90;49m key[0m
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET "
+[21C
+[0K127.0.0.1:6379> GET "c
+[22C
+[0K127.0.0.1:6379> GET "co
+[23C
+[0K127.0.0.1:6379> GET "cou
+[24C
+[0K127.0.0.1:6379> GET "coun
+[25C
+[0K127.0.0.1:6379> GET "count
+[26C
+[0K127.0.0.1:6379> GET "counte
+[27C
+[0K127.0.0.1:6379> GET "counter
+[28C
+[0K127.0.0.1:6379> GET "counter"[0;90;49m [0m
+[29C
+[0K127.0.0.1:6379> GET "counter"
+[29C
+"9001"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> D
+[17C
+[0K127.0.0.1:6379> De
+[18C
+[0K127.0.0.1:6379> Del[0;90;49m key [key ...][0m
+[19C
+[0K127.0.0.1:6379> Dele
+[20C
+[0K127.0.0.1:6379> Del[0;90;49m key [key ...][0m
+[19C
+[0K127.0.0.1:6379> De
+[18C
+[0K127.0.0.1:6379> D
+[17C
+[0K127.0.0.1:6379> DE
+[18C
+[0K127.0.0.1:6379> DEL[0;90;49m key [key ...][0m
+[19C
+[0K127.0.0.1:6379> DELE
+[20C
+[0K127.0.0.1:6379> DELET
+[21C
+[0K127.0.0.1:6379> DELETE
+[22C
+[0K127.0.0.1:6379> DELETE 
+[23C
+[0K127.0.0.1:6379> DELETE "
+[24C
+[0K127.0.0.1:6379> DELETE 
+[23C
+[0K127.0.0.1:6379> DELETE
+[22C
+[0K127.0.0.1:6379> DELET
+[21C
+[0K127.0.0.1:6379> DELE
+[20C
+[0K127.0.0.1:6379> DEL[0;90;49m key [key ...][0m
+[19C
+[0K127.0.0.1:6379> DE
+[18C
+[0K127.0.0.1:6379> D
+[17C
+[0K127.0.0.1:6379> 
+[16C
+[0K127.0.0.1:6379> d
+[17C
+[0K127.0.0.1:6379> de
+[18C
+[0K127.0.0.1:6379> del[0;90;49m key [key ...][0m
+[19C
+[0K127.0.0.1:6379> dele
+[20C
+[0K127.0.0.1:6379> del[0;90;49m key [key ...][0m
+[19C
+[0K127.0.0.1:6379> del [0;90;49mkey [key ...][0m
+[20C
+[0K127.0.0.1:6379> del "
+[21C
+[0K127.0.0.1:6379> del "c
+[22C
+[0K127.0.0.1:6379> del "co
+[23C
+[0K127.0.0.1:6379> del "cou
+[24C
+[0K127.0.0.1:6379> del "coun
+[25C
+[0K127.0.0.1:6379> del "count
+[26C
+[0K127.0.0.1:6379> del "counte
+[27C
+[0K127.0.0.1:6379> del "counter
+[28C
+[0K127.0.0.1:6379> del "counter"[0;90;49m [key ...][0m
+[29C
+[0K127.0.0.1:6379> del "counter"
+[29C
+(integer) 1
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET[0;90;49m key[0m
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET[0;90;49m key[0m
+[19C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> 
+[16C
+[0K127.0.0.1:6379> E
+[17C
+[0K127.0.0.1:6379> EK
+[18C
+[0K127.0.0.1:6379> EKY
+[19C
+[0K127.0.0.1:6379> EK
+[18C
+[0K127.0.0.1:6379> E
+[17C
+[0K127.0.0.1:6379> 
+[16C
+[0K127.0.0.1:6379> K
+[17C
+[0K127.0.0.1:6379> KE
+[18C
+[0K127.0.0.1:6379> KEY
+[19C
+[0K127.0.0.1:6379> KEYS[0;90;49m pattern[0m
+[20C
+[0K127.0.0.1:6379> KEYS [0;90;49mpattern[0m
+[21C
+[0K127.0.0.1:6379> KEYS *[0;90;49m [0m
+[22C
+[0K127.0.0.1:6379> KEYS *
+[22C
+(empty array)
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET[0;90;49m key[0m
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET "
+[21C
+[0K127.0.0.1:6379> GET "C
+[22C
+[0K127.0.0.1:6379> GET "Co
+[23C
+[0K127.0.0.1:6379> GET "Cou
+[24C
+[0K127.0.0.1:6379> GET "Co
+[23C
+[0K127.0.0.1:6379> GET "C
+[22C
+[0K127.0.0.1:6379> GET "
+[21C
+[0K127.0.0.1:6379> GET "c
+[22C
+[0K127.0.0.1:6379> GET "co
+[23C
+[0K127.0.0.1:6379> GET "cou
+[24C
+[0K127.0.0.1:6379> GET "coun
+[25C
+[0K127.0.0.1:6379> GET "count
+[26C
+[0K127.0.0.1:6379> GET "counte
+[27C
+[0K127.0.0.1:6379> GET "counter
+[28C
+[0K127.0.0.1:6379> GET "counter"[0;90;49m [0m
+[29C
+[0K127.0.0.1:6379> GET "counter"
+[29C
+"1"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> e
+[17C
+[0K127.0.0.1:6379> ex
+[18C
+[0K127.0.0.1:6379> exi
+[19C
+[0K127.0.0.1:6379> exit
+[20C
+[0K127.0.0.1:6379> exit
+[20C
+[?2004hroot@629fd24a5c8b:/data# exit
+[?2004l
+exit
+]0;ember@DESKTOP-0NRNUTB: /mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[01;32member@DESKTOP-0NRNUTB[00m:[01;34m/mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[00m$ exit
+exit
+
+Script done on 2022-06-17 06:42:00+03:00 [COMMAND_EXIT_CODE="0"]
+key ...][0m
+[19C
+[0K127.0.0.1:6379> De
+[18C
+[0K127.0.0.1:6379> D
+[17C
+[0K127.0.0.1:6379> DE
+[18C
+[0K127.0.0.1:6379> DEL[0;90;49m key [key ...][0m
+[19C
+[0K127.0.0.1:6379> DELE
+[20C
+[0K127.0.0.1:6379> DELET
+[21C
+[0K127.0.0.1:6379> DELETE
+[22C
+[0K127.0.0.1:6379> DELETE 
+[23C
+[0K127.0.0.1:6379> DELETE "
+[24C
+[0K127.0.0.1:6379> DELETE 
+[23C
+[0K127.0.0.1:6379> DELETE
+[22C
+[0K127.0.0.1:6379> DELET
+[21C
+[0K127.0.0.1:6379> DELE
+[20C
+[0K127.0.0.1:6379> DEL[0;90;49m key [key ...][0m
+[19C
+[0K127.0.0.1:6379> DE
+[18C
+[0K127.0.0.1:6379> D
+[17C
+[0K127.0.0.1:6379> 
+[16C
+[0K127.0.0.1:6379> d
+[17C
+[0K127.0.0.1:6379> de
+[18C
+[0K127.0.0.1:6379> del[0;90;49m key [key ...][0m
+[19C
+[0K127.0.0.1:6379> dele
+[20C
+[0K127.0.0.1:6379> del[0;90;49m key [key ...][0m
+[19C
+[0K127.0.0.1:6379> del [0;90;49mkey [key ...][0m
+[20C
+[0K127.0.0.1:6379> del "
+[21C
+[0K127.0.0.1:6379> del "c
+[22C
+[0K127.0.0.1:6379> del "co
+[23C
+[0K127.0.0.1:6379> del "cou
+[24C
+[0K127.0.0.1:6379> del "coun
+[25C
+[0K127.0.0.1:6379> del "count
+[26C
+[0K127.0.0.1:6379> del "counte
+[27C
+[0K127.0.0.1:6379> del "counter
+[28C
+[0K127.0.0.1:6379> del "counter"[0;90;49m [key ...][0m
+[29C
+[0K127.0.0.1:6379> del "counter"
+[29C
+(integer) 1
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET[0;90;49m key[0m
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET[0;90;49m key[0m
+[19C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> 
+[16C
+[0K127.0.0.1:6379> E
+[17C
+[0K127.0.0.1:6379> EK
+[18C
+[0K127.0.0.1:6379> EKY
+[19C
+[0K127.0.0.1:6379> EK
+[18C
+[0K127.0.0.1:6379> E
+[17C
+[0K127.0.0.1:6379> 
+[16C
+[0K127.0.0.1:6379> K
+[17C
+[0K127.0.0.1:6379> KE
+[18C
+[0K127.0.0.1:6379> KEY
+[19C
+[0K127.0.0.1:6379> KEYS[0;90;49m pattern[0m
+[20C
+[0K127.0.0.1:6379> KEYS [0;90;49mpattern[0m
+[21C
+[0K127.0.0.1:6379> KEYS *[0;90;49m [0m
+[22C
+[0K127.0.0.1:6379> KEYS *
+[22C
+(empty array)
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET[0;90;49m key[0m
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET "
+[21C
+[0K127.0.0.1:6379> GET "C
+[22C
+[0K127.0.0.1:6379> GET "Co
+[23C
+[0K127.0.0.1:6379> GET "Cou
+[24C
+[0K127.0.0.1:6379> GET "Co
+[23C
+[0K127.0.0.1:6379> GET "C
+[22C
+[0K127.0.0.1:6379> GET "
+[21C
+[0K127.0.0.1:6379> GET "c
+[22C
+[0K127.0.0.1:6379> GET "co
+[23C
+[0K127.0.0.1:6379> GET "cou
+[24C
+[0K127.0.0.1:6379> GET "coun
+[25C
+[0K127.0.0.1:6379> GET "count
+[26C
+[0K127.0.0.1:6379> GET "counte
+[27C
+[0K127.0.0.1:6379> GET "counter
+[28C
+[0K127.0.0.1:6379> GET "counter"[0;90;49m [0m
+[29C
+[0K127.0.0.1:6379> GET "counter"
+[29C
+"1"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> e
+[17C
+[0K127.0.0.1:6379> ex
+[18C
+[0K127.0.0.1:6379> exi
+[19C
+[0K127.0.0.1:6379> exit
+[20C
+[0K127.0.0.1:6379> exit
+[20C
+[?2004hroot@629fd24a5c8b:/data# exit
+[?2004l
+exit
+]0;ember@DESKTOP-0NRNUTB: /mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[01;32member@DESKTOP-0NRNUTB[00m:[01;34m/mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[00m$ exit
+exit
+Script done, file is typescript
+]0;ember@DESKTOP-0NRNUTB: /mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[01;32member@DESKTOP-0NRNUTB[00m:[01;34m/mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[00m$ ls
+[0m[01;32mDockerfile[0m  [01;32mREADME.md[0m  [01;32mapp.js[0m  [34;42mbin[0m  [01;32mdocker-compose.dev.yml[0m  [01;32mdocker-compose.yml[0m  [34;42mmongo[0m  [34;42mnode_modules[0m  [01;32mpackage-lock.json[0m  [01;32mpackage.json[0m  [34;42mredis[0m  [34;42mrequests[0m  [34;42mroutes[0m  [01;32mtypescript[0m  [34;42mutil[0m
+]0;ember@DESKTOP-0NRNUTB: /mnt/e/Koulujuttui/fullstackopen19/osa12/todo-app/todo-backend[01;32member@DESKTOP-0NRNUTB[00m:[01;34m/mnt/

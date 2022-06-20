@@ -1,0 +1,9 @@
+PUT http://localhost:3003/api/blogs/618ad626441ec142ccc3af44
+Content-Type: application/json
+
+{  
+    "title": "Jeejee",
+    "author": "Kari Kai",
+    "url": "http://twitch.tv",
+    "likes": 39
+}
